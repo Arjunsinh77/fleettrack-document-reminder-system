@@ -1,5 +1,3 @@
-<!-- views/dashboard.ejs -->
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,223 +8,208 @@
   <title>FleetTrack Dashboard</title>
 
   <style>
-    /* public/css/style.css */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: sans-serif;
+    }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:sans-serif;
-}
+    body {
+      background: #f3f4f6;
+    }
 
-body{
-  background:#f3f4f6;
-}
+    .sidebar {
+      width: 260px;
+      height: 100vh;
+      background: #111827;
+      position: fixed;
+      left: 0;
+      top: 0;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 1000;
+    }
 
-/* ===================== */
-/* SIDEBAR */
-/* ===================== */
+    .logo {
+      color: white;
+      margin-bottom: 30px;
+    }
 
-.sidebar{
-  width:260px;
-  height:100vh;
-  background:#111827;
-  position:fixed;
-  left:0;
-  top:0;
-  padding:20px;
-  display:flex;
-  flex-direction:column;
-  justify-content:space-between;
-  z-index:1000;
-}
+    .sidebar a {
+      color: #d1d5db;
+      text-decoration: none;
+      display: block;
+      padding: 14px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
 
-.logo{
-  color:white;
-  margin-bottom:30px;
-}
+    .sidebar a:hover {
+      background: #1f2937;
+      color: white;
+    }
 
-.sidebar a{
-  color:#d1d5db;
-  text-decoration:none;
-  display:block;
-  padding:14px;
-  border-radius:10px;
-  margin-bottom:10px;
-  transition:0.3s;
-}
+    .logout {
+      background: #dc2626;
+      color: white !important;
+    }
 
-.sidebar a:hover{
-  background:#1f2937;
-  color:white;
-}
+    /* ===================== */
+    /* MAIN */
+    /* ===================== */
 
-.logout{
-  background:#dc2626;
-  color:white !important;
-}
+    .main {
+      margin-left: 260px;
+      padding: 25px;
+    }
 
-/* ===================== */
-/* MAIN */
-/* ===================== */
+    /* ===================== */
+    /* TOPBAR */
+    /* ===================== */
 
-.main{
-  margin-left:260px;
-  padding:25px;
-}
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-/* ===================== */
-/* TOPBAR */
-/* ===================== */
+    .menu-btn {
+      border: none;
+      background: none;
+      font-size: 30px;
+      display: none;
+    }
 
-.topbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
 
-.menu-btn{
-  border:none;
-  background:none;
-  font-size:30px;
-  display:none;
-}
+    .notification {
+      font-size: 22px;
+      cursor: pointer;
+    }
 
-.top-right{
-  display:flex;
-  align-items:center;
-  gap:20px;
-}
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.notification{
-  font-size:22px;
-  cursor:pointer;
-}
+    .avatar {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
 
-.profile{
-  display:flex;
-  align-items:center;
-  gap:10px;
-}
+    /* ===================== */
+    /* STATS */
+    /* ===================== */
 
-.avatar{
-  width:45px;
-  height:45px;
-  border-radius:50%;
-  background:#2563eb;
-  color:white;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-weight:bold;
-}
+    .stats-card {
+      padding: 25px;
+      border-radius: 20px;
+      color: white;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    }
 
-/* ===================== */
-/* STATS */
-/* ===================== */
+    .stats-card h2 {
+      font-size: 35px;
+    }
 
-.stats-card{
-  padding:25px;
-  border-radius:20px;
-  color:white;
-  box-shadow:0 5px 20px rgba(0,0,0,0.1);
-}
+    .blue {
+      background: #2563eb;
+    }
 
-.stats-card h2{
-  font-size:35px;
-}
+    .yellow {
+      background: #f59e0b;
+    }
 
-.blue{
-  background:#2563eb;
-}
+    .red {
+      background: #ef4444;
+    }
 
-.yellow{
-  background:#f59e0b;
-}
-
-.red{
-  background:#ef4444;
-}
-
-.green{
-  background:#22c55e;
-}
-
-/* ===================== */
-/* SEARCH */
-/* ===================== */
-
-.search-box input{
-  width:100%;
-  padding:15px;
-  border:none;
-  border-radius:15px;
-  outline:none;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
-  margin-bottom: 30px;
-}
+    .green {
+      background: #22c55e;
+    }
 
 
-/* ===================== */
-/* TRUCK CARD */
-/* ===================== */
+    .search-box input {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 15px;
+      outline: none;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 30px;
+    }
 
-.truck-card-ui{
-  background:white;
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 5px 20px rgba(0,0,0,0.08);
-  transition:0.3s;
-}
 
-.truck-card-ui:hover{
-  transform:translateY(-5px);
-}
 
-.truck-top{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:15px;
-}
+    .truck-card-ui {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      transition: 0.3s;
+    }
 
-.truck-actions{
-  display:flex;
-  justify-content:space-between;
-  margin-top:20px;
-}
+    .truck-card-ui:hover {
+      transform: translateY(-5px);
+    }
 
-/* ===================== */
-/* MOBILE */
-/* ===================== */
+    .truck-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 15px;
+    }
 
-@media(max-width:992px){
+    .truck-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
 
-  .sidebar{
-    left:-260px;
-    transition:0.3s;
-  }
 
-  .sidebar.show{
-    left:0;
-  }
 
-  .main{
-    margin-left:0;
-  }
+    @media(max-width:992px) {
 
-  .menu-btn{
-    display:block;
-  }
-}
+      .sidebar {
+        left: -260px;
+        transition: 0.3s;
+      }
+
+      .sidebar.show {
+        left: 0;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+    }
   </style>
 
   <!-- Bootstrap -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <!-- Bootstrap Icons -->
-  <link rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
   <!-- Custom CSS -->
   <link rel="stylesheet" href="/css/style.css">
@@ -270,15 +253,7 @@ body{
 
   </div>
 
-  <!-- ===================== -->
-  <!-- MAIN CONTENT -->
-  <!-- ===================== -->
-
   <div class="main">
-
-    <!-- ===================== -->
-    <!-- TOPBAR -->
-    <!-- ===================== -->
 
     <div class="topbar">
 
@@ -328,143 +303,116 @@ body{
 
       <div class="col-md-3">
         <div class="stats-card yellow">
-          <h2 id="expiringCount"><%=soon%></h2>
+          <h2 id="expiringCount">
+            <%=soon%>
+          </h2>
           <p>Expiring Soon</p>
         </div>
       </div>
 
       <div class="col-md-3">
         <div class="stats-card red">
-          <h2 id="expiredCount"><%=ex%></h2>
+          <h2 id="expiredCount">
+            <%=ex%>
+          </h2>
           <p>Expired</p>
         </div>
       </div>
 
       <div class="col-md-3">
         <div class="stats-card green">
-          <h2 id="validCount"><%=v%></h2>
+          <h2 id="validCount">
+            <%=v%>
+          </h2>
           <p>Valid</p>
         </div>
       </div>
 
     </div>
 
-    <!-- ===================== -->
-    <!-- SEARCH -->
-    <!-- ===================== -->
-
     <div class="search-box mt-4">
-      <input type="text" id="search" placeholder="Search trucks..."
-        onkeyup="searchTruck()">
+      <input type="text" id="search" placeholder="Search trucks..." onkeyup="searchTruck()">
     </div>
 
-   
-    <!-- ===================== -->
-    <!-- TRUCK CARDS -->
-    <!-- ===================== -->
+
 
     <div class="row">
 
-      <% 
-      
-      let valid = 0;
-      let expired = 0;
-      let expiring = 0;
+      <% let valid=0; let expired=0; let expiring=0; trucks.forEach(truck=> {
 
-      trucks.forEach(truck => {
+        let diff = Math.ceil(
+        (new Date(truck.insurance) - new Date())
+        / (1000 * 60 * 60 * 24)
+        );
 
-      let diff = Math.ceil(
-      (new Date(truck.insurance) - new Date())
-      / (1000 * 60 * 60 * 24)
-      );
+        let status = "";
+        let badge = "";
 
-      let status = "";
-      let badge = "";
+        if(diff < 0){ status="Expired" ; badge="danger" ; expired++; } else if(diff <=4){ status="Expiring Soon" ;
+          badge="warning" ; expiring++; } else{ status="Valid" ; badge="success" ; valid++; } %>
 
-      if(diff < 0){
-      status = "Expired";
-      badge = "danger";
-      expired++;
-      }
-      else if(diff <= 4){
-      status = "Expiring Soon";
-      badge = "warning";
-      expiring++;
-      }
-      else{
-      status = "Valid";
-      badge = "success";
-      valid++;
-      }
+          <div class="col-lg-4 col-md-6 mb-4 truck-card">
 
-      %>
+            <div class="truck-card-ui">
 
-      <div class="col-lg-4 col-md-6 mb-4 truck-card">
+              <div class="truck-top">
 
-        <div class="truck-card-ui">
+                <h4>
+                  <%= truck.truckNo %>
+                </h4>
 
-          <div class="truck-top">
+                <span class="badge bg-<%= badge %>">
+                  <%= status %>
+                </span>
 
-            <h4>
-              <%= truck.truckNo %>
-            </h4>
+              </div>
 
-            <span class="badge bg-<%= badge %>">
-              <%= status %>
-            </span>
+              <div class="truck-body">
 
-          </div>
+                <p>
+                  <strong>Owner:</strong>
+                  <%= truck.owner %>
+                </p>
 
-          <div class="truck-body">
+                <p>
+                  <strong>Mobile:</strong>
+                  <%= truck.mobile %>
+                </p>
 
-            <p>
-              <strong>Owner:</strong>
-              <%= truck.owner %>
-            </p>
+                <p>
+                  <strong>Insurance:</strong>
+                  <%= truck.insurance ? new Date(truck.insurance).toDateString() : "" %>
+                </p>
 
-            <p>
-              <strong>Mobile:</strong>
-              <%= truck.mobile %>
-            </p>
+              </div>
 
-            <p>
-              <strong>Insurance:</strong>
-              <%= truck.insurance ? new Date(truck.insurance).toDateString() : "" %>
-            </p>
+              <div class="truck-actions">
 
-          </div>
+                <a href="/edit/<%= truck._id %>" class="btn btn-warning btn-sm">
+                  Edit
+                </a>
 
-          <div class="truck-actions">
+                <form action="/delete/<%= truck._id %>" method="POST">
 
-            <a href="/edit/<%= truck._id %>"
-              class="btn btn-warning btn-sm">
-              Edit
-            </a>
+                  <button class="btn btn-danger btn-sm">
+                    Delete
+                  </button>
 
-            <form action="/delete/<%= truck._id %>"
-              method="POST">
+                </form>
 
-              <button class="btn btn-danger btn-sm">
-                Delete
-              </button>
+              </div>
 
-            </form>
+            </div>
 
           </div>
 
-        </div>
-
-      </div>
-
-      <% }) %>
+          <% }) %>
 
     </div>
 
   </div>
 
-  <!-- ===================== -->
-  <!-- JS -->
-  <!-- ===================== -->
+
 
   <script>
 
@@ -491,14 +439,14 @@ body{
       });
     }
 
-    // MOBILE SIDEBAR
+
 
     function toggleSidebar() {
       document.getElementById("sidebar")
         .classList.toggle("show");
     }
 
-  
+
   </script>
 
 </body>
