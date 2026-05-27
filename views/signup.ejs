@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sign Up</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+  background: linear-gradient(135deg, #2f80ed, #56ccf2);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  border-radius: 15px;
+}
+
+.title {
+  color: #2f80ed;
+  font-weight: bold;
+}
+
+.btn-custom {
+  background: #2f80ed;
+  color: white;
+}
+
+.btn-custom:hover {
+  background: #1c60c7;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="card shadow p-4" style="width: 100%; max-width: 400px;">
+  
+  <h3 class="text-center title mb-3">🚛 Truck Manager</h3>
+  <h5 class="text-center mb-4">Sign Up</h5>
+
+  <form action="/signup" method="POST">
+
+    <input type="text" name="username" class="form-control mb-2" placeholder="Full Name" required>
+
+    <input type="email" name="email" class="form-control mb-2" placeholder="Email" required>
+
+    <input type="password" name="password" class="form-control mb-2" placeholder="Password" required>
+
+    <input type="text" name="mobile" class="form-control mb-3" placeholder="Mobile Number">
+
+    <button class="btn btn-custom w-100">Create Account</button>
+
+  </form>
+
+  <p class="text-center mt-3">
+    Already have account? <a href="/">Login</a>
+  </p>
+
+</div>
+
+</body>
+</html>
